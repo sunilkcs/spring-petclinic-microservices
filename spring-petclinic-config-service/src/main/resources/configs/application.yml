@@ -1,0 +1,35 @@
+# COMMON APPLICATION PROPERTIES
+
+# start services on random port by default
+server.port: 0
+
+# database init, supports mysql too
+petclinic.database: mysql
+
+spring:
+  datasource:
+    schema: classpath*:db/${petclinic.database}/schema.sql
+    data: classpath*:db/${petclinic.database}/data.sql
+    url: jdbc:mysql://localhost:3306/petclinic?createDatabaseIfNotExist=true&useSSL=false
+    username: root
+    password: root
+    initialization-mode: always
+  sleuth:
+    sampler:
+      percentage: 1.0
+
+# JPA
+spring.jpa.hibernate.ddl-auto: none
+
+# Spring Boot makes actuator secure by default
+management.endpoints.web.exposure.include: '*'
+management.security.enabled: false
+# management.security.endpoints.web.exposure.include: info,health,routes
+# Logging
+logging.level.org.springframework: INFO
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/

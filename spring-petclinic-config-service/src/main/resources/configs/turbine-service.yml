@@ -1,0 +1,12 @@
+server:
+  port: 8989
+turbine:
+  app-config: visits-service,customers-service,vets-service
+  cluster-name-expression: new String("default")
+---
+spring:
+  profiles: docker
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery-service:8761/eureka/

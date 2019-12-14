@@ -1,0 +1,16 @@
+for HSQLDB
+
+driver-class-name: org.hsqldb.jdbc.JDBCDriver
+url: jdbc:hsqldb:hsql://localhost:9001/petclinic
+username: sa
+password:
+
+for mysql
+
+schema: classpath*:db/${petclinic.database}/schema.sql
+data: classpath*:db/${petclinic.database}/data.sql
+url: jdbc:mysql://localhost:3306/petclinic?createDatabaseIfNotExist=true&useSSL=false
+username: root
+password: root
+initialization-mode: always
+    
